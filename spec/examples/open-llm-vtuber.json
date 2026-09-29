@@ -1,0 +1,84 @@
+{
+  "$comment": "按仓库结构推断，未经作者确认",
+  "cip": "0.1",
+  "id": "open-llm-vtuber",
+  "name": "Open-LLM-VTuber",
+  "kind": "app",
+  "also": [
+    "frontend"
+  ],
+  "repo": "https://github.com/Open-LLM-VTuber/Open-LLM-VTuber",
+  "license": "MIT",
+  "maintainer": "community",
+  "run": {
+    "type": "http",
+    "command": [
+      "uv",
+      "run",
+      "run_server.py"
+    ],
+    "url": "http://localhost:12393",
+    "port": 12393
+  },
+  "speaks": [
+    {
+      "protocol": "openai-chat",
+      "role": "client"
+    },
+    {
+      "protocol": "mcp",
+      "role": "client",
+      "at": "file:mcp_servers.json"
+    }
+  ],
+  "llm": {
+    "formats": [
+      "openai-chat",
+      "anthropic-messages",
+      "gemini",
+      "ollama"
+    ],
+    "url_style": "base",
+    "routes": {
+      "chat": {
+        "base_url": "file:conf.yaml#/character_config/agent_config/llm_configs/openai_compatible_llm/base_url",
+        "api_key": "file:conf.yaml#/character_config/agent_config/llm_configs/openai_compatible_llm/llm_api_key",
+        "model": "file:conf.yaml#/character_config/agent_config/llm_configs/openai_compatible_llm/model"
+      }
+    },
+    "$comment": "选哪家由 /character_config/agent_config/agent_settings/basic_memory_agent/llm_provider 决定，这里只列 openai_compatible_llm 一路"
+  },
+  "prompts": [
+    {
+      "id": "persona",
+      "role": "persona",
+      "at": "file:conf.yaml#/character_config/persona_prompt",
+      "format": "text",
+      "reload": "restart",
+      "variants": "file:characters/*.yaml#/character_config/persona_prompt",
+      "$comment": "在界面切换角色时，characters/ 下的文件覆盖 conf.yaml 的同名字段"
+    }
+  ],
+  "config": {
+    "example": "config_templates/conf.default.yaml"
+  },
+  "permissions": [
+    "network",
+    "microphone",
+    "camera"
+  ],
+  "ui": {
+    "distribution": [
+      "static",
+      "desktop"
+    ],
+    "backend": {
+      "mode": "own"
+    },
+    "renders": [
+      "text",
+      "live2d",
+      "tts"
+    ]
+  }
+}

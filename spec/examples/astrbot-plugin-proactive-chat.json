@@ -1,0 +1,41 @@
+{
+  "$comment": "按仓库结构推断，未经作者确认。名称、版本、支持平台见仓库里的 metadata.yaml，这里不重复",
+  "cip": "0.1",
+  "id": "astrbot-plugin-proactive-chat",
+  "name": "主动消息 (Proactive Chat)",
+  "kind": "host-plugin",
+  "repo": "https://github.com/DBJD-CR/astrbot_plugin_proactive_chat",
+  "maintainer": "community",
+  "run": { "type": "host" },
+  "host": { "name": "astrbot", "min_version": "4.24.0", "manifest": "metadata.yaml" },
+  "llm": { "via_host": true },
+  "prompts": [
+    {
+      "id": "proactive-private",
+      "role": "system",
+      "at": "host:astrbot:plugin_config/astrbot_plugin_proactive_chat#/friend_settings/proactive_prompt",
+      "format": "text",
+      "reload": "hot"
+    },
+    {
+      "id": "proactive-group",
+      "role": "system",
+      "at": "host:astrbot:plugin_config/astrbot_plugin_proactive_chat#/group_settings/proactive_prompt",
+      "format": "text",
+      "reload": "hot"
+    }
+  ],
+  "autonomy": {
+    "proactive": {
+      "has": true,
+      "off": "host:astrbot:plugin_config/astrbot_plugin_proactive_chat#/friend_settings/enable",
+      "off_value": false
+    },
+    "scheduler": {
+      "has": true,
+      "off": "host:astrbot:plugin_config/astrbot_plugin_proactive_chat#/friend_settings/auto_trigger_settings/enable_auto_trigger",
+      "off_value": false
+    }
+  },
+  "config": { "schema": "_conf_schema.json" }
+}

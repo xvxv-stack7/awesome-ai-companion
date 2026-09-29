@@ -1,0 +1,55 @@
+{
+  "$comment": "按仓库结构推断，未经作者确认",
+  "cip": "0.1",
+  "id": "kiwi-mem",
+  "name": "kiwi-mem",
+  "kind": "service",
+  "repo": "https://github.com/LucieEveille/kiwi-mem",
+  "summary": "带长期记忆的 OpenAI 兼容网关，同时提供记忆 MCP",
+  "license": "AGPL-3.0-only",
+  "maintainer": "community",
+  "run": {
+    "type": "http",
+    "command": ["python", "main.py"],
+    "url": "http://localhost:8080",
+    "port": 8080,
+    "env": {
+      "API_KEY": { "required": true, "secret": true },
+      "API_BASE_URL": { "required": true },
+      "DATABASE_URL": { "required": false, "secret": true },
+      "DEFAULT_MODEL": { "required": false },
+      "MEMORY_ENABLED": { "required": false, "default": "true" }
+    }
+  },
+  "speaks": [
+    { "protocol": "openai-chat", "role": "server", "path": "/v1" },
+    { "protocol": "openai-chat", "role": "client" },
+    { "protocol": "mcp", "transport": "streamable-http", "path": "/memory/mcp" }
+  ],
+  "llm": {
+    "formats": ["openai-chat"],
+    "url_style": "full-endpoint",
+    "routes": {
+      "chat": { "base_url": "env:API_BASE_URL", "api_key": "env:API_KEY", "model": "env:DEFAULT_MODEL" }
+    }
+  },
+  "prompts": [
+    {
+      "id": "persona",
+      "role": "persona",
+      "at": "file:system_prompt.txt",
+      "format": "text",
+      "reload": "restart",
+      "managed": "whole",
+      "$comment": "代码里注明这是降级方案，另有数据库里的人设"
+    }
+  ],
+  "data": [
+    { "id": "memory", "type": "memory", "at": "env:DATABASE_URL", "format": "postgres", "export": null }
+  ],
+  "autonomy": {
+    "memory": { "has": true, "off": "env:MEMORY_ENABLED", "off_value": "false" }
+  },
+  "config": { "example": ".env.example" },
+  "permissions": ["network"]
+}

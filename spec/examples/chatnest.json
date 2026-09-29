@@ -1,0 +1,88 @@
+{
+  "$comment": "按仓库结构推断，未经作者确认",
+  "cip": "0.1",
+  "id": "chatnest",
+  "name": "chatnest",
+  "kind": "frontend",
+  "also": [
+    "service"
+  ],
+  "repo": "https://github.com/ugui3u/chatnest",
+  "maintainer": "community",
+  "run": {
+    "type": "http",
+    "command": [
+      "sh",
+      "run.sh"
+    ],
+    "cwd": "full-stack",
+    "url": "http://127.0.0.1:8787",
+    "port": 8787,
+    "env": {
+      "CHAT_PASSWORD": {
+        "required": true,
+        "secret": true
+      },
+      "CHAT_SECRET": {
+        "required": true,
+        "secret": true
+      },
+      "ANTHROPIC_API_KEY": {
+        "required": false,
+        "secret": true
+      },
+      "ANTHROPIC_BASE_URL": {
+        "required": false,
+        "default": "https://api.anthropic.com"
+      }
+    }
+  },
+  "llm": {
+    "formats": [
+      "anthropic-messages"
+    ],
+    "routes": {
+      "chat": {
+        "base_url": "env:ANTHROPIC_BASE_URL",
+        "api_key": "env:ANTHROPIC_API_KEY",
+        "model": "storage:localStorage:chat_model"
+      },
+      "summary": {
+        "base_url": "env:ANTHROPIC_BASE_URL",
+        "api_key": "env:ANTHROPIC_API_KEY",
+        "model": "env:API_SUMMARY_MODEL"
+      }
+    }
+  },
+  "ui": {
+    "distribution": [
+      "single-file",
+      "pwa"
+    ],
+    "entry": "frontend-demo/index.html",
+    "backend": {
+      "mode": "own",
+      "own_api": "full-stack/app/main.py"
+    },
+    "streaming": true,
+    "renders": [
+      "text",
+      "markdown",
+      "reasoning",
+      "tool_call",
+      "file"
+    ],
+    "storage": {
+      "kind": "localStorage",
+      "prefix": "chat_",
+      "keys": {
+        "auth.token": {
+          "key": "chat_token",
+          "secret": true
+        },
+        "session.current": "chat_conversation",
+        "settings.model": "chat_model"
+      }
+    }
+  }
+}

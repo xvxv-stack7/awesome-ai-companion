@@ -1,0 +1,284 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/DasterProkio/awesome-ai-companion/blob/main/spec/companion.schema.json",
+  "title": "companion.json (CIP v0.1)",
+  "description": "伴侣互通协议描述文件。见 PROTOCOL.zh-CN.md。未知字段一律忽略，因此各层都允许额外属性。",
+  "type": "object",
+  "required": ["cip", "id", "name", "kind", "repo"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "$comment": { "type": "string" },
+    "cip": { "type": "string", "pattern": "^0\\.[0-9]+$" },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "kind": { "$ref": "#/$defs/kind" },
+    "also": { "type": "array", "items": { "$ref": "#/$defs/kind" }, "uniqueItems": true },
+    "repo": { "type": "string", "format": "uri" },
+    "summary": { "type": "string" },
+    "license": { "type": "string" },
+    "maintainer": { "enum": ["author", "community"] },
+    "level": { "type": "string", "pattern": "^C[0-3](\\+F[0-3])?$" },
+    "run": { "$ref": "#/$defs/run" },
+    "host": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "min_version": { "type": "string" },
+        "manifest": { "type": "string" }
+      }
+    },
+    "speaks": { "type": "array", "items": { "$ref": "#/$defs/speak" } },
+    "tools": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "object" },
+        { "type": "array" }
+      ]
+    },
+    "llm": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/llm" }] },
+    "prompts": { "oneOf": [{ "type": "null" }, { "type": "array", "items": { "$ref": "#/$defs/prompt" } }] },
+    "data": { "oneOf": [{ "type": "null" }, { "type": "array", "items": { "$ref": "#/$defs/data" } }] },
+    "autonomy": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/autonomy" }] },
+    "events": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/events" }] },
+    "health": { "$ref": "#/$defs/locator" },
+    "config": {
+      "type": "object",
+      "properties": {
+        "schema": { "type": "string" },
+        "example": { "type": "string" }
+      }
+    },
+    "ui": { "$ref": "#/$defs/ui" },
+    "permissions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "anyOf": [
+          { "enum": ["network", "filesystem", "microphone", "camera", "location", "device.ble", "device.intimate", "payment", "shell"] },
+          { "type": "string", "pattern": "^x-" }
+        ]
+      }
+    },
+    "adaptation": { "type": "object" }
+  },
+  "patternProperties": {
+    "^x-": {}
+  },
+  "$defs": {
+    "kind": {
+      "enum": ["service", "host-plugin", "game", "app", "frontend", "web-page", "hardware", "prompt-pack", "doc"]
+    },
+    "locator": {
+      "type": "string",
+      "pattern": "^(env|file|block|http|cli|storage|ui|host):.+"
+    },
+    "nullableLocator": {
+      "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/locator" }]
+    },
+    "run": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["stdio", "http", "static", "host", "app", "cloud", "none"] },
+        "command": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "cwd": { "type": "string" },
+        "url": { "type": "string" },
+        "port": { "type": "integer", "minimum": 1, "maximum": 65535 },
+        "entry": { "type": "string" },
+        "platforms": {
+          "type": "array",
+          "items": { "enum": ["android", "ios", "windows", "macos", "linux", "web"] }
+        },
+        "requires": { "type": "array", "items": { "type": "string" } },
+        "env": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "required": { "type": "boolean" },
+              "secret": { "type": "boolean" },
+              "default": {},
+              "description": { "type": "string" }
+            }
+          }
+        }
+      },
+      "allOf": [
+        { "if": { "properties": { "type": { "const": "stdio" } } }, "then": { "required": ["command"] } },
+        { "if": { "properties": { "type": { "const": "static" } } }, "then": { "required": ["entry"] } }
+      ]
+    },
+    "speak": {
+      "type": "object",
+      "required": ["protocol"],
+      "properties": {
+        "protocol": {
+          "anyOf": [
+            { "enum": ["mcp", "openai-chat", "cmd-text", "webhook-out", "card-v3", "buttplug"] },
+            { "type": "string" }
+          ]
+        },
+        "role": { "enum": ["server", "client"] },
+        "transport": { "enum": ["stdio", "streamable-http", "sse"] },
+        "path": { "type": "string" },
+        "at": { "$ref": "#/$defs/locator" }
+      }
+    },
+    "llmRoute": {
+      "type": "object",
+      "properties": {
+        "base_url": { "$ref": "#/$defs/nullableLocator" },
+        "api_key": { "$ref": "#/$defs/nullableLocator" },
+        "model": { "$ref": "#/$defs/nullableLocator" }
+      }
+    },
+    "llm": {
+      "type": "object",
+      "properties": {
+        "formats": {
+          "type": "array",
+          "items": { "enum": ["openai-chat", "openai-responses", "anthropic-messages", "gemini", "ollama"] }
+        },
+        "url_style": { "enum": ["base", "full-endpoint"] },
+        "via_host": { "type": "boolean" },
+        "routes": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/llmRoute" }
+        }
+      }
+    },
+    "prompt": {
+      "type": "object",
+      "required": ["id", "at"],
+      "properties": {
+        "id": { "type": "string" },
+        "role": { "enum": ["persona", "system", "style", "memory-policy", "tool-guide", "greeting", "other"] },
+        "at": { "$ref": "#/$defs/locator" },
+        "format": { "enum": ["text", "markdown", "jinja", "card-v2", "card-v3", "messages"] },
+        "reload": { "enum": ["hot", "next-turn", "restart", "switch"] },
+        "variants": { "$ref": "#/$defs/locator" },
+        "vars": { "type": "array", "items": { "type": "string" } },
+        "managed": { "enum": ["none", "block", "whole"] },
+        "$comment": { "type": "string" }
+      }
+    },
+    "data": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "enum": ["message", "memory", "state", "persona", "media", "other"] },
+        "at": { "$ref": "#/$defs/locator" },
+        "format": { "enum": ["companion-export", "sqlite", "postgres", "json", "jsonl", "markdown", "yaml", "other"] },
+        "export": { "$ref": "#/$defs/nullableLocator" },
+        "import": { "$ref": "#/$defs/nullableLocator" },
+        "$comment": { "type": "string" }
+      }
+    },
+    "autonomyItem": {
+      "type": "object",
+      "required": ["has"],
+      "properties": {
+        "has": { "type": "boolean" },
+        "off": { "$ref": "#/$defs/nullableLocator" },
+        "off_value": {},
+        "$comment": { "type": "string" }
+      }
+    },
+    "autonomy": {
+      "type": "object",
+      "properties": {
+        "memory": { "$ref": "#/$defs/autonomyItem" },
+        "scheduler": { "$ref": "#/$defs/autonomyItem" },
+        "proactive": { "$ref": "#/$defs/autonomyItem" },
+        "affect": { "$ref": "#/$defs/autonomyItem" },
+        "persona-evolution": { "$ref": "#/$defs/autonomyItem" },
+        "tools": { "$ref": "#/$defs/autonomyItem" }
+      },
+      "additionalProperties": { "$ref": "#/$defs/autonomyItem" }
+    },
+    "events": {
+      "type": "object",
+      "properties": {
+        "webhook": {
+          "type": "object",
+          "properties": {
+            "url": { "$ref": "#/$defs/locator" },
+            "secret": { "$ref": "#/$defs/locator" },
+            "types": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "inbound": { "$ref": "#/$defs/locator" },
+        "accepts": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "storageKey": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "required": ["key"],
+          "properties": {
+            "key": { "type": "string" },
+            "path": { "type": "string" },
+            "secret": { "type": "boolean" }
+          }
+        }
+      ]
+    },
+    "ui": {
+      "type": "object",
+      "properties": {
+        "distribution": {
+          "type": "array",
+          "items": { "enum": ["static", "single-file", "pwa", "userscript", "extension", "android", "ios", "desktop"] }
+        },
+        "entry": { "type": "string" },
+        "backend": {
+          "type": "object",
+          "properties": {
+            "mode": { "enum": ["openai-compatible", "own", "both"] },
+            "own_api": { "type": "string" }
+          }
+        },
+        "streaming": { "type": "boolean" },
+        "cards": {
+          "type": "object",
+          "properties": {
+            "import": { "type": "array", "items": { "enum": ["v1", "v2", "v3"] } },
+            "export": { "type": "array", "items": { "enum": ["v1", "v2", "v3"] } }
+          }
+        },
+        "renders": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              { "enum": ["text", "markdown", "image", "audio", "sticker", "reasoning", "tool_call", "action", "file", "live2d", "vrm", "tts"] },
+              { "type": "string", "pattern": "^x-" }
+            ]
+          }
+        },
+        "push": { "enum": ["sse", "websocket", "webpush", "poll", "none"] },
+        "storage": {
+          "type": "object",
+          "properties": {
+            "kind": { "enum": ["localStorage", "indexedDB", "sqlite", "file", "server"] },
+            "prefix": { "type": "string" },
+            "keys": { "type": "object", "additionalProperties": { "$ref": "#/$defs/storageKey" } },
+            "schema_version_key": { "type": "string" }
+          }
+        },
+        "embed": { "type": "boolean" },
+        "theme_vars": { "type": "boolean" },
+        "privacy": {
+          "type": "object",
+          "properties": {
+            "telemetry": { "type": "boolean" },
+            "third_party": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    }
+  }
+}

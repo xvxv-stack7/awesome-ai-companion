@@ -1,0 +1,25 @@
+{
+  "$comment": "按仓库结构推断，未经作者确认",
+  "cip": "0.1",
+  "id": "ci-yu-wu",
+  "name": "词语屋",
+  "kind": "game",
+  "repo": "https://github.com/yuyixuanfu/ci-yu-wu",
+  "summary": "给 AI 玩的文字地牢游戏",
+  "license": "CC-BY-NC-4.0",
+  "maintainer": "community",
+  "run": {
+    "type": "stdio",
+    "command": ["python", "ciyuwu_mcp_server.py"],
+    "requires": ["python>=3.10"]
+  },
+  "speaks": [
+    { "protocol": "mcp", "transport": "stdio" },
+    { "protocol": "cmd-text" }
+  ],
+  "tools": "tool-schema.json",
+  "llm": null,
+  "prompts": null,
+  "autonomy": null,
+  "events": null
+}
