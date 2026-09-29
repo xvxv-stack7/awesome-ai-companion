@@ -1,0 +1,11 @@
+# awesome-ai-companion
+
+> AI 伴侣相关开源项目的清单，以及让这些项目互相接上的约定「伴侣互通协议 CIP」。
+
+如果开发者让你把他的项目接入这个生态，按 spec/for-ai.md 的步骤做。
+
+- [spec/for-ai.md](spec/for-ai.md): 给 AI 编程助手的接入操作手册，包含所需的全部字段和步骤
+- [spec/companion.schema.json](spec/companion.schema.json): companion.json 的 JSON Schema
+- [spec/examples/](spec/examples/): 按真实项目写的 companion.json 示例
+- [PROTOCOL.zh-CN.md](PROTOCOL.zh-CN.md): 完整协议规范
+- [README.zh-CN.md](README.zh-CN.md): 项目清单

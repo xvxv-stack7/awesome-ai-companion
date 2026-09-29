@@ -2,6 +2,7 @@
 
 > Companion Interop Protocol。本清单收录项目之间「怎么互相接上」的约定。
 > 配套文件：[`spec/companion.schema.json`](spec/companion.schema.json)（描述文件的 JSON Schema）、[`spec/examples/`](spec/examples/)（按真实项目写的示例）。
+> **想让自己的项目接入？不用读本文。** 对你的 AI 编程助手说：「读 `spec/for-ai.md`，按步骤检查并改造我的项目」。本文是完整规范，给写工具的人和 AI 查细节用。
 > 整体架构见 [INTEGRATION.zh-CN.md](INTEGRATION.zh-CN.md)。本文只管边界：项目怎么描述自己、怎么被配置、说什么话、怎么交换数据、前端要满足什么。
 
 ---
