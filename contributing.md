@@ -18,10 +18,11 @@ Contributions that improve the accuracy, usefulness, and curation quality of thi
 
 1. Search the list for duplicates and closely related projects.
 2. Inspect the candidate repository's codebase, architecture, license, pricing, release state, and actual viability.
-3. Add the entry to the most specific category in `README.md` and keep the description factual and verified against code. Because the list is extensive, each entry description must stay strictly under 200 characters to keep the document concise and easy to scan.
+3. Add the entry to the most specific category in `README.md` (sections are named after what the reader wants, such as "Help Them Remember You") and keep the description factual and verified against code. Because the list is extensive, each entry description must stay strictly under 200 characters to keep the document concise and easy to scan.
 4. Use the existing language, platform, and readiness metadata format.
-5. End the entry with proper punctuation and run `npx awesome-lint` before opening a pull request.
-6. If you are submitting your own project, say so in the pull request, and state whether there is a paid version and what it adds.
+5. Add the entry's URL (without `https://github.com/` for GitHub repositories) to the right section of `scripts/by-module.json`, then run `python3 scripts/build-by-module.py` to regenerate `by-module.md` and `by-module.zh-CN.md`. Do not edit those two files by hand.
+6. End the entry with proper punctuation and run `npx awesome-lint` before opening a pull request.
+7. If you are submitting your own project, say so in the pull request, and state whether there is a paid version and what it adds.
 
 Please update `README.zh-CN.md` when you can provide an accurate Chinese translation. Otherwise, call out the missing translation in the pull request so it can be reviewed separately.
 

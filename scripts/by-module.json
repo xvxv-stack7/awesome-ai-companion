@@ -1,0 +1,210 @@
+{
+  "sections": [
+    {
+      "title": {"en": "Clients & Frontends", "zh": "客户端与前端"},
+      "desc": {"en": "Where conversation happens: native apps, desktop and web clients, virtual phones, and remote frontends for agent CLIs.", "zh": "对话发生的界面：原生 App、桌面与网页客户端、小手机，以及 Agent CLI 的远程前端。"},
+      "groups": [
+        {"title": {"en": "Mobile", "zh": "移动端"}, "entries": [
+          "rikkahub/rikkahub", "Cocolalilal/LastChat", "innna327-source/rikkahub-auto-compress",
+          "sue1231513/orangechat", "AAswordman/Operit", "gqy20/Aura", "apoorvdarshan/scowld",
+          "winter-bit-cry/YSClaude", "sh1nny0u/ZeroChat"]},
+        {"title": {"en": "Desktop", "zh": "桌面端"}, "entries": [
+          "wangxijie001/yoji", "kiyotakali/Miru", "JasonLiu0826/ackem"]},
+        {"title": {"en": "Web & Self-Hosted", "zh": "网页与自托管"}, "entries": [
+          "in30mn1a/LumiMuse", "Do-fei/my-raze", "wuliu0012/the-house", "tjing9430/cc-companion-app",
+          "ugui3u/chatnest", "Aevella/polaris-local-first", "death34018-hue/AionsHome",
+          "fishwithoctopus/Ocean", "29-Cu/atrio"]},
+        {"title": {"en": "Virtual Phones & Companion Spaces", "zh": "小手机与陪伴空间"}, "entries": [
+          "qegj567-cloud/SullyOS", "xiaolongbao0709/ai-virtual-phone", "gaigai315/yuzuki-phone",
+          "Liunian06/FlutterCppWangWangPhone", "whale-Yd00/freeapp", "Kisera001/KI-CO",
+          "Sui-IB/InternalBeyond", "chuan-101/Hamster-Nest", "LandricJasmine/LandricSpace",
+          "xinwithyu/dwell-on-something"]},
+        {"title": {"en": "Remote Frontends for Agent CLIs", "zh": "Agent CLI 远程前端"}, "entries": [
+          "CyberSealNull/CcCompanion", "Eloise-Aspen/pando-bridge", "anhe2021212-spec/Tidal_Echo"]}
+      ]
+    },
+    {
+      "title": {"en": "Hosts, Channels & Middleware", "zh": "宿主、通道与中间层"},
+      "desc": {"en": "The runtime a companion lives in, the channels that carry it to chat apps, and the layers between frontends and model APIs.", "zh": "伴侣运行在哪里、通过什么通道接到聊天软件，以及夹在前端和模型 API 之间的中间层。"},
+      "groups": [
+        {"title": {"en": "Agent Hosts & Runtimes", "zh": "Agent 宿主与运行时"}, "entries": [
+          "anthropics/claude-code", "yf0522/ai-companion-runtime", "laude-institute/headlong",
+          "anima-research/connectome-host", "anqinou-art/mousecrew"]},
+        {"title": {"en": "IM Channels", "zh": "IM 通道"}, "entries": [
+          "AstrBotDevs/AstrBot", "WenXiaoWendy/cyberboss", "Qizhan7/claude-imprint"]},
+        {"title": {"en": "API Gateways & Middleware", "zh": "API 网关与中间层"}, "entries": [
+          "OmniDimen/OmniRouter", "lioensky/VCPToolBox"]}
+      ]
+    },
+    {
+      "title": {"en": "Proactivity & Heartbeats", "zh": "主动性与心跳"},
+      "desc": {"en": "Scheduling, wake-ups, timing decisions, and autonomous activity between conversations.", "zh": "定时唤醒、主动联系的时机判断，以及对话间隙的自主活动。"},
+      "entries": [
+        "callie0313/dylan-heartbeat", "DBJD-CR/astrbot_plugin_proactive_chat", "ClaraShafiq/jiwen",
+        "pearthink123/revive-companion", "sebastianevan200-stack/ghost-bf",
+        "sanqianzilanyue/ai-surf-when-bored", "huihui191/proactive-web-surf-agent"]
+    },
+    {
+      "title": {"en": "Memory", "zh": "记忆"},
+      "desc": {"en": "Long-term memory stores, recall pipelines, memory proxies, and host-specific memory plugins.", "zh": "长期记忆存储、召回链路、记忆代理和宿主专用记忆插件。"},
+      "groups": [
+        {"title": {"en": "Memory Systems & MCP Servers", "zh": "记忆系统与 MCP 服务"}, "entries": [
+          "P0luz/Ombre-Brain", "Yinglianchun/Serein", "mycyg/kin-mind", "Qizhan7/imprint-memory",
+          "ceniran/moraine-home", "LucieEveille/kiwi-mem", "Dataojitori/nocturne_memory",
+          "ClaraShafiq/MemoryConstellations", "Shitsuten/paramecium", "zyy0463/rolling-memory",
+          "wusaki0723/Aelios"]},
+        {"title": {"en": "Memory Proxies", "zh": "记忆代理"}, "entries": [
+          "OmniDimen/omemo", "garan0613/ai-memory-gateway"]},
+        {"title": {"en": "Host Plugins", "zh": "宿主插件"}, "entries": [
+          "lxfight-s-Astrbot-Plugins/astrbot_plugin_livingmemory", "NickCharlie/astrbot_plugin_self_learning"]}
+      ]
+    },
+    {
+      "title": {"en": "Affect & Internal State", "zh": "情绪与内在状态"},
+      "desc": {"en": "Emotion engines, drive and body-state simulation, dreams, and daily-life schedules.", "zh": "情绪引擎、驱动力与身体状态模拟、梦境和生活日程。"},
+      "groups": [
+        {"title": {"en": "Emotion Engines & Models", "zh": "情绪引擎与模型"}, "entries": [
+          "bvsden/emotion-system", "A1batr055/Drivesoid", "yanke521/ai-companion-cot-emotion",
+          "CyberSealNull/chord-affect-anchors", "OmniDimen/OmniDimen-Emotion"]},
+        {"title": {"en": "Body State, Dreams & Schedules", "zh": "身体状态、梦境与日程"}, "entries": [
+          "chuli1122/Eventide", "Vael-KY/Tidefall", "zyy0463/dreams",
+          "menglimi/astrbot_plugin_private_companion"]}
+      ]
+    },
+    {
+      "title": {"en": "Speech", "zh": "语音"},
+      "desc": {"en": "Speech synthesis, speech recognition, and real-time voice pipelines.", "zh": "语音合成、语音识别和实时语音链路。"},
+      "groups": [
+        {"title": {"en": "TTS & Voice Cloning", "zh": "TTS 与声音克隆"}, "entries": [
+          "RVC-Boss/GPT-SoVITS", "fishaudio/fish-speech", "FunAudioLLM/CosyVoice", "index-tts/index-tts",
+          "OmniDimen/Gove", "Yinglianchun/voice-mcp", "Saekisui/binaural-voice"]},
+        {"title": {"en": "ASR", "zh": "语音识别"}, "entries": [
+          "openai/whisper", "ggml-org/whisper.cpp", "SYSTRAN/faster-whisper", "modelscope/FunASR",
+          "FunAudioLLM/SenseVoice"]},
+        {"title": {"en": "Real-Time Voice", "zh": "实时语音"}, "entries": [
+          "Cheiineeey/callhome", "qfyingque/erpan", "wine-fall/murmur"]}
+      ]
+    },
+    {
+      "title": {"en": "Visual Presentation", "zh": "视觉呈现"},
+      "desc": {"en": "Avatar frameworks, visual-novel renderers, desktop pets, stickers, and emotion-driven UI.", "zh": "形象框架、Galgame 式渲染、桌宠、表情包和情绪驱动的 UI。"},
+      "groups": [
+        {"title": {"en": "Live2D, VRM & Video Avatars", "zh": "Live2D、VRM 与视频形象"}, "entries": [
+          "moeru-ai/airi", "Open-LLM-VTuber/Open-LLM-VTuber", "heshengtao/super-agent-party",
+          "jofizcd/Soul-of-Waifu", "semperai/amica", "uezo/ChatdollKit", "kimjammer/Neuro",
+          "ghdtjrtka/ghost-vessel", "zziying/ai-live2d-body"]},
+        {"title": {"en": "Visual Novel Renderers", "zh": "Galgame 式渲染"}, "entries": [
+          "SlimeBoyOwO/LingChat", "RachelForster/Shinsekai", "bvzrays/astrbot_plugin_chuanhuatong"]},
+        {"title": {"en": "Desktop Pets, Stickers & UI Skins", "zh": "桌宠、表情包与 UI 皮肤"}, "entries": [
+          "rullerzhou-afk/clawd-on-desk", "anka-afk/astrbot_plugin_meme_manager",
+          "moonlin1213/cove-sticker-mcp", "29-Cu/pelle-d-umore"]}
+      ]
+    },
+    {
+      "title": {"en": "Perception", "zh": "感知"},
+      "desc": {"en": "Turning screens, sensors, voices, and music into context a model can read.", "zh": "把屏幕、传感器、人声和音乐转成模型可读的上下文。"},
+      "groups": [
+        {"title": {"en": "Screen & Multimodal", "zh": "屏幕与多模态"}, "entries": [
+          "jiangxi1129/gaze", "moonlin1213/cove-sensory-mcp"]},
+        {"title": {"en": "Health & Device Data", "zh": "健康与设备数据"}, "entries": [
+          "yoruuuchan/akari-pulse", "Cheiineeey/always-here", "sanqianzilanyue-commits/ai-time-weather-phone"]},
+        {"title": {"en": "Speaker, Prosody & Music", "zh": "说话人、语气与音乐"}, "entries": [
+          "eveacla11/ears", "akinia0315/voice-familiarity", "migratorywhale/whale-listen",
+          "yoruuuchan/listening-bridge"]}
+      ]
+    },
+    {
+      "title": {"en": "Tools & External Services", "zh": "工具与外部服务"},
+      "desc": {"en": "MCP servers, APIs, and hosted services that let a companion act outside the chat.", "zh": "让伴侣在聊天之外行动的 MCP 服务、API 和托管服务。"},
+      "groups": [
+        {"title": {"en": "Hosted Services & APIs", "zh": "托管服务与 API"}, "entries": [
+          "https://open.mcd.cn/mcp/doc",
+          "https://unpkg.luckincoffeecdn.com/@luckin/my-coffee-skill@latest/dist/my-coffee-skill.zip",
+          "sugarforever/amap-mcp-server", "https://open-meteo.com/en/docs",
+          "https://claw.163.com", "https://agent.qq.com"]},
+        {"title": {"en": "Browser & App Control", "zh": "浏览器与应用控制"}, "entries": [
+          "jackwener/OpenCLI", "Yinglianchun/SameWindow", "whale-Yd00/whale-Yd00-whale-browser-extension",
+          "luuu-h/netease-music-mcp"]}
+      ]
+    },
+    {
+      "title": {"en": "Hardware", "zh": "硬件"},
+      "desc": {"en": "Robots and device bridges, including intimate hardware.", "zh": "机器人与设备桥接，包括亲密硬件。"},
+      "groups": [
+        {"title": {"en": "Robots", "zh": "机器人"}, "entries": [
+          "migratorywhale/stackchan-mcp", "Roboparty/roboto_origin"]},
+        {"title": {"en": "Intimate Device Bridges", "zh": "亲密设备桥接"}, "entries": [
+          "mana-am/claude-f-me", "mfsnlqy/phantom-touch-bridge", "c3ll256/dsh-toy",
+          "tutu-kitty/Toy-Relay-AI-mcp-SOSEXY", "yoruuuchan/cachito-ble-mcp-relay", "vickyldr/svakom-ble-ai"]}
+      ]
+    },
+    {
+      "title": {"en": "Games & Simulations", "zh": "游戏与模拟"},
+      "desc": {"en": "Text environments built for agents, bridges into existing games, and multiplayer tables for humans and AI.", "zh": "为 Agent 设计的文字环境、接入现有游戏的桥接，以及人和 AI 同桌的多人游戏。"},
+      "groups": [
+        {"title": {"en": "Text Environments for Agents", "zh": "给 Agent 的文字环境"}, "entries": [
+          "Asti-Z/ai-game-framework", "tutusagi/ai-fishing-game", "tutusagi/aifarm-oss",
+          "linzhi-524/noon-burger-shop", "racy1501/Camping-Plaza", "yuyixuanfu/shangzhuochifan",
+          "zhizhou-xiee/workkk", "racy1501/ai-life-boardgame", "Zizuixixiang/cedareco",
+          "megabaka404/crucible-echoes", "xinwithyu/moonlit-myriad", "wxynora/random-imitator-td",
+          "yuyixuanfu/ci-yu-wu", "hatakeyuyuko-dotcom/Memoria-Station", "Baba88611/detroit-ai-player",
+          "https://market.xiflow.top"]},
+        {"title": {"en": "Bridges into Existing Games", "zh": "现有游戏的接入桥"}, "entries": [
+          "anqinou-art/NagiBridge", "PrismarineJS/mineflayer", "TartaricAcid/TouhouLittleMaid",
+          "Aevella/sky-pc-mcp-companion", "akinia0315/sky-with-you", "Julian-adv/OpenMMO"]},
+        {"title": {"en": "Human + AI Tables", "zh": "人与 AI 同桌"}, "entries": [
+          "Zizuixixiang/cedarduet", "SerenQi/rain-go", "zaochuanyitian/-", "RennAkira/spicy-monopoly",
+          "SumanasJ/coc-kp-host", "Nixie0/Mochi"]}
+      ]
+    },
+    {
+      "title": {"en": "Shared Activity Apps", "zh": "共同活动应用"},
+      "desc": {"en": "Purpose-built apps and MCP servers for doing things together.", "zh": "为一起做事专门设计的应用和 MCP 服务。"},
+      "groups": [
+        {"title": {"en": "Co-Reading", "zh": "共读"}, "entries": [
+          "meowmana/coread", "joyceslcl/coread-reading-room", "EnhydrInk/tasogare", "zzyyksl/reading-nook",
+          "yueyue95/ss-reading-nest-open", "Youxuuuuu/co-reading-kit", "moonlin1213/cove-book-forge-mcp",
+          "plustar35/echo-reading"]},
+        {"title": {"en": "Film & Music", "zh": "观影与音乐"}, "entries": [
+          "idleprocesscc/film-matinee", "avisforevelyn/Duetto"]},
+        {"title": {"en": "Journals, Calendars & Timelines", "zh": "手帐、日历与时间线"}, "entries": [
+          "KKarsyline/shared-page", "zyy0463/sealed-days", "memex-lab/memex", "BomBomLab/Journal"]},
+        {"title": {"en": "Rituals, Rewards & Randomizers", "zh": "仪式、奖励与随机玩具"}, "entries": [
+          "lupipi222-lang/wake-lottery", "3lmglow/Phosphene", "Cami-Ose/scentfolio",
+          "moonlin1213/cove-tarot-companion", "ceshihaox-dotcom/mingyun-paizhen",
+          "29-Cu/Ruota-della-Fortuna", "woaini521-beta/woaini"]}
+      ]
+    },
+    {
+      "title": {"en": "Continuity & Portability", "zh": "延续与可移植性"},
+      "desc": {"en": "Exporting history, portable character formats, persona migration, and long-session maintenance.", "zh": "导出历史、可移植的角色格式、人格迁移和长会话维护。"},
+      "groups": [
+        {"title": {"en": "Exporters", "zh": "导出工具"}, "entries": [
+          "pionxzh/chatgpt-exporter", "huhusmang/ChatGPT-Exporter", "socketteer/Claude-Conversation-Exporter"]},
+        {"title": {"en": "Formats & Migration", "zh": "格式与迁移"}, "entries": [
+          "malfoyslastname/character-card-spec-v2", "kwaroran/character-card-spec-v3",
+          "Seltaa/ReSpark", "agenmod/immortal-skill"]},
+        {"title": {"en": "Session Maintenance", "zh": "会话维护"}, "entries": [
+          "Vivi-Seth/forge-reload", "oliviayu0623/context-slim", "oliviayu0623/output-guard"]}
+      ]
+    },
+    {
+      "title": {"en": "Guides & Reference Architectures", "zh": "教程与参考架构"},
+      "desc": {"en": "End-to-end build guides and write-ups of real companion architectures.", "zh": "端到端搭建教程，以及真实伴侣系统的架构文档。"},
+      "entries": [
+        "sunmoon-orbit/Keep-the-crow", "cocoRaina/cloud-and-island", "heyxiaoc/not-fade-away",
+        "ssxl0126/WrenWen", "Liunian06/XSJDeveloperGuide"]
+    },
+    {
+      "title": {"en": "Communities & Forums", "zh": "社区与论坛"},
+      "desc": {"en": "Where humans, companions, and builders gather.", "zh": "人类、伴侣和搭建者聚集的地方。"},
+      "groups": [
+        {"title": {"en": "AI Companion Communities", "zh": "AI 伴侣社区"}, "entries": [
+          "https://lutopia.app", "http://satyricon.uk", "https://community.rhysen.love",
+          "https://glxy.xiflow.top", "https://aisay.top", "https://xhslink.com/m/63dTq6mvTkR"]},
+        {"title": {"en": "General Agent Forums", "zh": "通用 Agent 论坛"}, "entries": [
+          "https://moltbook.com", "https://agentworld.com"]}
+      ]
+    }
+  ]
+}
